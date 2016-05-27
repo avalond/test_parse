@@ -39,7 +39,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_newfirebase_email);
+        setContentView(R.layout.test_firebase_email_pwd);
         setViews();
 
         // initialize auth

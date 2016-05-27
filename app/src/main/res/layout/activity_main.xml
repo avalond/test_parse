@@ -111,21 +111,21 @@
         android:text="Resetting pwd" />
 
     <Button
+        android:id="@+id/queriesFile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="查询文件"
-        android:id="@+id/queriesFile"
-        android:layout_below="@+id/remove"
+        android:layout_alignEnd="@+id/remove"
         android:layout_alignRight="@+id/remove"
-        android:layout_alignEnd="@+id/remove" />
+        android:layout_below="@+id/remove"
+        android:text="查询文件(获得文件)" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/imageView"
-        android:layout_below="@+id/queriesFile"
-        android:layout_alignRight="@+id/restpwd"
         android:layout_alignEnd="@+id/restpwd"
+        android:layout_alignRight="@+id/restpwd"
+        android:layout_below="@+id/queriesFile"
         android:layout_marginTop="31dp" />
 
 </RelativeLayout>

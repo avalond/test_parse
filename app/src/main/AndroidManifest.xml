@@ -17,8 +17,9 @@
     IMPORTANT: Change "com.parse.starter.permission.C2D_MESSAGE" in the lines below
     to match your app's package name + ".permission.C2D_MESSAGE".
     -->
-    <permission android:protectionLevel="signature"
-        android:name="com.nuan_nuan.parse_test.permission.C2D_MESSAGE" />
+    <permission
+        android:name="com.nuan_nuan.parse_test.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
     <uses-permission android:name="com.nuan_nuan.parse_test.permission.C2D_MESSAGE" />
 
     <application
@@ -38,9 +39,15 @@
         </activity>
         <activity android:name=".parse.LoginManagerActivity" />
         <activity android:name=".parse.SignUpManagerActivity" />
-        <!--test new firebase-->
-        <activity android:name=".firebase.BaseActivity"/>
-        <activity android:name=".firebase.EmailPasswordActivity"/>
+
+
+        <!--
+        test new firebase
+        -->
+        <activity android:name=".firebase.BaseActivity" />
+        <activity android:name=".firebase.EmailPasswordActivity" />
+        <activity android:name=".firebase.CustomAuthActivity" />
+        <activity android:name=".firebase.AnonymousAuthActivity" />
 
 
         <!--

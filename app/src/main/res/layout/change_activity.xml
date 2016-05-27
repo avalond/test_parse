@@ -8,4 +8,9 @@
         android:layout_height="wrap_content"
         android:text="EmailPasswordActivity"
         android:id="@+id/emailpwd" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AnonymousAuthActivity"
+        android:id="@+id/Anonymous" />
 </LinearLayout>
