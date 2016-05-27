@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
     tools:context="com.nuan_nuan.parse_test.MainActivity">
 
 
@@ -24,21 +24,21 @@
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="name"
-
         android:layout_above="@+id/pwd"
+
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:hint="name" />
 
     <EditText
 
         android:id="@+id/pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="pwd"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:hint="pwd" />
 
     <Button
         android:id="@+id/login"
@@ -50,10 +50,10 @@
         android:id="@+id/setting_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="设置当前用户"
         android:layout_above="@+id/ann"
+        android:layout_toEndOf="@+id/retrieving"
         android:layout_toRightOf="@+id/retrieving"
-        android:layout_toEndOf="@+id/retrieving" />
+        android:text="设置当前用户" />
 
     <Button
         android:id="@+id/ann"
@@ -67,37 +67,65 @@
 
     <Button
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Retrieving Object"
         android:id="@+id/retrieving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ann"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="Retrieving Object" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="update"
         android:id="@+id/update"
-        android:layout_alignTop="@+id/retrieving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignTop="@+id/retrieving"
+        android:text="update" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="remove"
         android:id="@+id/remove"
-        android:layout_below="@+id/ann"
-        android:layout_alignRight="@+id/ann"
-        android:layout_alignEnd="@+id/ann" />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="file"
+        android:layout_alignEnd="@+id/ann"
+        android:layout_alignRight="@+id/ann"
+        android:layout_below="@+id/ann"
+        android:text="remove" />
+
+    <Button
         android:id="@+id/file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/remove"
         android:layout_alignLeft="@+id/retrieving"
-        android:layout_alignStart="@+id/retrieving" />
+        android:layout_alignStart="@+id/retrieving"
+        android:text="file" />
+
+    <Button
+        android:id="@+id/restpwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/retrieving"
+        android:layout_toEndOf="@+id/file"
+        android:layout_toRightOf="@+id/file"
+        android:text="Resetting pwd" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查询文件"
+        android:id="@+id/queriesFile"
+        android:layout_below="@+id/remove"
+        android:layout_alignRight="@+id/remove"
+        android:layout_alignEnd="@+id/remove" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/queriesFile"
+        android:layout_alignRight="@+id/restpwd"
+        android:layout_alignEnd="@+id/restpwd"
+        android:layout_marginTop="31dp" />
+
 </RelativeLayout>

@@ -1,16 +1,20 @@
 package com.nuan_nuan.parse_test;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.nuan_nuan.parse_test.utils.Logger;
 import com.nuan_nuan.parse_test.utils.json.Json;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
@@ -18,8 +22,11 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
+
+import java.io.ByteArrayOutputStream;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -34,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private Button remove;
     private Button update;
     private Button file;
+    private Button restpwd;
+    private Button queriesFile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         remove = (Button) findViewById(R.id.remove);
         update = (Button) findViewById(R.id.update);
         file = (Button) findViewById(R.id.file);
+        restpwd = (Button) findViewById(R.id.restpwd);
+        queriesFile = (Button) findViewById(R.id.queriesFile);
 
         //注册
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
                     //creating a new parse user.
                     ParseUser pUser = new ParseUser();
-                    pUser.setUsername(username);
+                    pUser.setEmail(username);
                     pUser.setPassword(password);
+                    pUser.setUsername("测试,测试");
 
                     Logger.json(TAG, Json.get().toJson(pUser));
 
@@ -234,12 +247,83 @@ public class MainActivity extends AppCompatActivity {
         file.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                byte[] data = "Working at Parse is great!".getBytes();
-                ParseFile file = new ParseFile("resume.txt", data);
-                file.saveInBackground();
+                // Locate the image in res > drawable-hdpi
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.mipmap.ic_launcher);
+                // Convert it to byte
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                // Compress image to lower quality scale 1 - 100
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] image = stream.toByteArray();
+                ParseFile file = new ParseFile("androidbegin.png", image);
+
+                file.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e != null) {
+                            Logger.d(TAG, e.getMessage() + "---" + e.getCode());
+                        } else {
+                            Logger.d(TAG, "++++ ok");
+                            ParseObject jobApplication = new ParseObject("testfile");
+                            jobApplication.put("applicantName", "kevin");
+                            jobApplication.put("applicantFile", file);
+                            jobApplication.saveInBackground();
+                        }
+                    }
+                });
             }
         });
-
+        //query file is ok
+        queriesFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("testfile");
+                query.getInBackground("UqlUiY0UZY", new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject object, ParseException e) {
+                        if (e == null) {
+                            ParseFile file = object.getParseFile("applicantFile");
+                            if (file == null) {
+                                return;
+                            }
+                            file.getDataInBackground(new GetDataCallback() {
+                                @Override
+                                public void done(byte[] data, ParseException e) {
+                                    if (e == null) {
+                                        if (data.length == 0) {
+                                            return;
+                                        }
+                                        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                        ImageView image = (ImageView) findViewById(R.id.imageView);
+                                        if (image != null) {
+                                            image.setImageBitmap(bitmap);
+                                        }
+                                        Logger.d(TAG, "is ok");
+                                    }
+                                }
+                            });
+                        } else {
+                            Logger.d(TAG, "-------");
+                        }
+                    }
+                });
+            }
+        });
+        restpwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.requestPasswordResetInBackground("809997202@qq.com", new RequestPasswordResetCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            Logger.d(TAG, "is send ok ");
+                        } else {
+                            Logger.d(TAG, e.getMessage() + "" + e.getCode());    // get error code 1 parse error some warning
+                        }
+                    }
+                });
+            }
+        });
 
     }
 

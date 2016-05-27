@@ -1,6 +1,7 @@
 package com.nuan_nuan.parse_test;
 
 import com.parse.Parse;
+import com.parse.ParseInstallation;
 
 /**
  * Created by kevin.
@@ -18,9 +19,9 @@ public class Application extends android.app.Application {
                 .server("http://lokobee.herokuapp.com/parse/")   // is work
                 // old
                 //.server("http://lokobee.herokuapp.com/parse")  // not work
-
                 .build()
         );
+        ParseInstallation.getCurrentInstallation().saveInBackground();
         //  Automatic User    anonymous
 //        ParseUser.enableAutomaticUser();
 //        ParseUser.getCurrentUser().saveInBackground();
