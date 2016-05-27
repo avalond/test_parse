@@ -28,22 +28,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.parse.APPLICATION_ID"
-            android:value="@string/parse_app_id" />
-        <meta-data
-            android:name="com.parse.CLIENT_KEY"
-            android:value="@string/parse_client_key" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".firebase.ChangeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginManagerActivity" />
-        <activity android:name=".SignUpManagerActivity" />
+        <activity android:name=".parse.LoginManagerActivity" />
+        <activity android:name=".parse.SignUpManagerActivity" />
+        <!--test new firebase-->
+        <activity android:name=".firebase.BaseActivity"/>
+        <activity android:name=".firebase.EmailPasswordActivity"/>
+
 
         <!--
         this is parse use  this is start

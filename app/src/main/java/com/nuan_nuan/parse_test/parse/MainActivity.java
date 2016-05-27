@@ -1,4 +1,4 @@
-package com.nuan_nuan.parse_test;
+package com.nuan_nuan.parse_test.parse;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.nuan_nuan.parse_test.R;
 import com.nuan_nuan.parse_test.utils.Logger;
 import com.nuan_nuan.parse_test.utils.json.Json;
 import com.parse.GetCallback;

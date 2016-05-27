@@ -1,6 +1,10 @@
 <resources>
-	<string name="app_name">parse_test</string>
-	<string name="parse_app_id">rmLZ2E1HCKNqwvQeGX1h</string>
-	<string name="parse_client_key">lRxUVPmTs6jDP3YUwq2L</string>
+    <string name="app_name">parse_test</string>
+    <string name="parse_app_id">rmLZ2E1HCKNqwvQeGX1h</string>
+    <string name="parse_client_key">lRxUVPmTs6jDP3YUwq2L</string>
+
+
+    <string name="Firebase_User">Firebase User: %s</string>
+    <string name="Email_User">Email User: %s</string>
 
 </resources>
