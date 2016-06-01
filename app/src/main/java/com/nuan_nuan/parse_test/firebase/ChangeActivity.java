@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.nuan_nuan.parse_test.R;
+import com.nuan_nuan.parse_test.firebase.push.PushActivity;
 import com.nuan_nuan.parse_test.utils.Logger;
 
 /**
@@ -17,6 +18,7 @@ public class ChangeActivity extends BaseActivity implements View.OnClickListener
 
     private Button emailpwd;
     private Button Anonymous;
+    private Button push;
 
 
     @Override
@@ -32,6 +34,8 @@ public class ChangeActivity extends BaseActivity implements View.OnClickListener
         //
         Anonymous = (Button) findViewById(R.id.Anonymous);
         Anonymous.setOnClickListener(this);
+        push = (Button) findViewById(R.id.push);
+        push.setOnClickListener(this);
 
     }
 
@@ -51,6 +55,13 @@ public class ChangeActivity extends BaseActivity implements View.OnClickListener
                 intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent1);
                 Logger.d(TAG, "go to AnonymousAuthActivity is ok");
+                break;
+            case R.id.push:
+                Intent intent2 = new Intent(ChangeActivity.this, PushActivity.class);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent2);
+                Logger.d(TAG, "go to Push Activity is ok");
                 break;
         }
     }
