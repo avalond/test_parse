@@ -33,7 +33,7 @@
       android:theme="@style/AppTheme"
       >
 
-    <activity android:name=".firebase.ChangeActivity">
+    <activity android:name=".parse.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 

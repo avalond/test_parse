@@ -86,7 +86,7 @@ dependencies {
 
     compile 'com.google.firebase:firebase-auth:9.0.1'
     // Google Sign In SDK (only required for Google Sign In)
-    compile 'com.google.android.gms:play-services:9.0.0'
+   // compile 'com.google.android.gms:play-services:9.0.0'
 
     compile 'com.google.firebase:firebase-messaging:9.0.1'
 }
